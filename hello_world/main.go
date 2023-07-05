@@ -6,14 +6,24 @@ import (
 )
 
 func main() {
-	fmt.Println(Hello("Julio"))
+	fmt.Println(Hello("Julio", "English"))
 }
 
-func Hello(name string) string {
+func Hello(name string, language string) string {
 	fName := strings.Trim(name, " ")
-
 	if fName == "" {
-		return "Hello, World!"
+		name = "World"
 	}
-	return fmt.Sprintf("Hello, %s!", name)
+	return prefixLanguage(language) + name
+}
+
+func prefixLanguage(language string) string {
+	switch language {
+	case "Spanish":
+		return "Hola, "
+	case "French":
+		return "Bonjour, "
+	default:
+		return "Hello, "
+	}
 }
